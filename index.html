@@ -83,7 +83,7 @@
     background: var(--off-white);
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
-    padding-top: 80px;
+    padding-top: 60px;
   }
   .hero-bg-shape {
     position: absolute;
@@ -111,7 +111,7 @@
 
   .hero-content {
     position: relative; z-index: 2;
-    max-width: 620px; padding: 60px 52px; text-align: center;
+    max-width: 620px; padding: 30px 52px; text-align: center;
     animation: fadeUp 1s ease-out;
   }
   @keyframes fadeUp {
@@ -267,6 +267,7 @@
     box-shadow: 0 2px 16px rgba(30,36,32,0.05);
     border-top: 3px solid transparent;
     position: relative; overflow: hidden;
+    text-align: center;
   }
   .servicio-card::before {
     content: '';
@@ -291,7 +292,7 @@
     border-radius: 50%;
     background: var(--sage-pale);
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 18px;
+    margin: 0 auto 18px;
     transition: background 0.3s;
   }
   .servicio-card:hover .servicio-icon { background: var(--sage-pale); }
@@ -496,10 +497,10 @@
 <!-- SERVICIOS -->
 <div class="servicios-wrap" id="servicios">
   <div class="servicios">
-    <div class="servicios-header">
-      <div class="section-label">Modalidades de trabajo</div>
+    <div class="servicios-header" style="text-align:center;">
+      <div class="section-label" style="display:block;">Modalidades de trabajo</div>
       <h2 class="section-title">¿En qué puedo acompañarte?</h2>
-      <div class="section-divider"></div>
+      <div class="section-divider" style="margin:0 auto 30px;"></div>
     </div>
     <div class="servicios-grid">
 
@@ -591,7 +592,7 @@
       </div>
       <div class="contacto-item">
         <div class="contacto-label">Para quién</div>
-        <div class="contacto-value" style="font-size:16px;">Jóvenes y adultos</div>
+        <div class="contacto-value" style="font-size:17px;">Jóvenes y adultos</div>
       </div>
     </div>
   </div>
