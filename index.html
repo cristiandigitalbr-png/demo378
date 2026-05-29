@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego Tomás Mayorga · Lic. en Psicología</title>
+<meta name="description" content="Diego Tomás Mayorga, Licenciado en Psicología. Atención virtual para jóvenes y adultos. WhatsApp: 2804728661">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7a8f7c;
+    --sage-light: #a8bca9;
+    --sage-pale: #eef2ee;
+    --sage-deep: #4d6150;
+    --clay: #c4a882;
+    --clay-light: #dcc5a4;
+    --clay-pale: #faf6f0;
+    --off-white: #f7f5f2;
+    --white: #ffffff;
+    --ink: #1e2420;
+    --ink-soft: #3a4040;
+    --muted: #7a8080;
+    --light-line: rgba(122,143,124,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 52px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(247,245,242,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--light-line);
+  }
+  .nav-brand { text-decoration: none; display: flex; align-items: center; gap: 14px; }
+  .nav-monogram {
+    width: 38px; height: 38px;
+    border: 1.5px solid var(--sage);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--sage-deep);
+    letter-spacing: 0.5px;
+  }
+  .nav-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--ink); display: block; line-height: 1.2;
+  }
+  .nav-brand-sub {
+    font-size: 9px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--sage);
+    font-weight: 400; display: block;
+  }
+  .nav-links { display: flex; gap: 34px; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--sage-deep) !important;
+    color: white !important;
+    padding: 10px 22px; border-radius: 40px;
+    font-size: 11px !important;
+  }
+  .nav-cta:hover { background: var(--sage) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--off-white);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero-bg-shape {
+    position: absolute;
+    right: -120px; top: 50%;
+    transform: translateY(-50%);
+    width: 55vw; height: 90vh;
+    background: var(--sage-pale);
+    border-radius: 50% 0 0 50%;
+    opacity: 0.7;
+  }
+  .hero-dots {
+    position: absolute;
+    left: 6%; bottom: 12%;
+    width: 90px; height: 90px;
+    background-image: radial-gradient(circle, var(--sage-light) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+    opacity: 0.4;
+  }
+  .hero-line {
+    position: absolute;
+    left: 0; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(180deg, transparent, var(--sage) 30%, var(--clay) 70%, transparent);
+    opacity: 0.25;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 620px; padding: 60px 52px;
+    animation: fadeUp 1s ease-out;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--sage);
+    margin-bottom: 22px; font-weight: 500;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--sage); opacity: 0.5; }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5.5vw, 70px);
+    font-weight: 300; color: var(--ink);
+    line-height: 1.05; margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .hero-title strong { font-weight: 600; display: block; }
+  .hero-title em { font-style: italic; color: var(--sage-deep); display: block; font-weight: 300; }
+
+  .hero-subtitle {
+    font-size: 12px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--clay);
+    margin-bottom: 28px; font-weight: 400;
+    display: block;
+  }
+  .hero-tagline {
+    font-size: 15px; color: var(--muted);
+    line-height: 1.8; margin-bottom: 42px;
+    font-weight: 300; max-width: 400px;
+    border-left: 2px solid var(--clay-light);
+    padding-left: 16px;
+  }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 15px 34px;
+    background: var(--sage-deep);
+    color: white;
+    text-decoration: none; font-size: 11px;
+    font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; border-radius: 40px;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 15px 34px;
+    border: 1.5px solid var(--sage);
+    color: var(--sage-deep);
+    text-decoration: none; font-size: 11px;
+    font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; border-radius: 40px;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { background: var(--sage-pale); }
+
+  /* ── LABELS ── */
+  .section-label {
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--sage);
+    margin-bottom: 10px; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.5vw, 46px);
+    font-weight: 400; color: var(--ink);
+    line-height: 1.15; margin-bottom: 14px;
+    letter-spacing: -0.3px;
+  }
+  .section-divider {
+    width: 32px; height: 2px;
+    background: var(--clay); margin-bottom: 30px; opacity: 0.7;
+  }
+
+  /* ── SOBRE MÍ ── */
+  .sobre-wrap { background: var(--white); padding: 100px 52px; }
+  .sobre {
+    max-width: 1060px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+
+  .sobre-photo-wrap {
+    position: relative;
+  }
+  .sobre-photo-bg {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    background: var(--sage-pale);
+    border-radius: 4px;
+    z-index: 0;
+  }
+  .sobre-photo {
+    position: relative; z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(30,36,32,0.12);
+  }
+  .sobre-photo img {
+    width: 100%; display: block;
+    filter: grayscale(8%) contrast(1.04);
+  }
+  .sobre-photo-badge {
+    position: absolute; bottom: 24px; left: 24px; z-index: 2;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    padding: 12px 18px; border-radius: 4px;
+    border-left: 3px solid var(--clay);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .badge-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 600; color: var(--ink);
+  }
+  .badge-title {
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--sage); margin-top: 2px;
+  }
+
+  .sobre-text p {
+    font-size: 15px; line-height: 1.9;
+    color: var(--muted); margin-bottom: 18px;
+    font-weight: 300;
+  }
+  .sobre-text p:last-child { margin-bottom: 0; }
+  .sobre-highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic;
+    color: var(--sage-deep); line-height: 1.5;
+    margin-bottom: 24px; font-weight: 400;
+  }
+
+  /* ── SERVICIOS ── */
+  .servicios-wrap { background: var(--clay-pale); padding: 90px 52px; }
+  .servicios { max-width: 1060px; margin: 0 auto; }
+  .servicios-header { margin-bottom: 50px; }
+  .servicios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .servicio-card {
+    background: white;
+    border-radius: 4px;
+    padding: 36px 28px;
+    transition: all 0.35s;
+    box-shadow: 0 2px 16px rgba(30,36,32,0.05);
+    border-top: 3px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .servicio-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--sage), var(--clay));
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .servicio-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30,36,32,0.1); }
+  .servicio-card:hover::before { opacity: 1; }
+
+  .servicio-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300;
+    color: var(--sage-pale); line-height: 1;
+    margin-bottom: 16px; display: block;
+    transition: color 0.3s;
+  }
+  .servicio-card:hover .servicio-num { color: var(--sage-light); }
+
+  .servicio-icon {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--sage-pale);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    transition: background 0.3s;
+  }
+  .servicio-card:hover .servicio-icon { background: var(--sage-pale); }
+
+  .servicio-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 600;
+    color: var(--ink-soft); margin-bottom: 8px; line-height: 1.3;
+  }
+  .servicio-desc {
+    font-size: 13px; color: var(--muted);
+    line-height: 1.7; font-weight: 300;
+  }
+
+  /* ── MID BANNER ── */
+  .mid-banner {
+    background: var(--ink);
+    padding: 80px 52px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .mid-banner-shape {
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(122,143,124,0.15);
+  }
+  .mid-banner-shape2 {
+    position: absolute;
+    bottom: -80px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,168,130,0.1);
+  }
+  .mid-banner-content { position: relative; z-index: 2; max-width: 540px; margin: 0 auto; }
+  .mid-banner-content .section-label { color: var(--sage-light); justify-content: center; }
+  .mid-banner-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.5vw, 44px);
+    font-weight: 300; color: white; margin-bottom: 14px;
+    font-style: italic;
+  }
+  .mid-banner-content p {
+    color: rgba(255,255,255,0.5); font-size: 14px;
+    margin-bottom: 34px; line-height: 1.8; font-weight: 300;
+  }
+  .btn-sage-solid {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 40px;
+    background: var(--sage);
+    color: white;
+    text-decoration: none; font-size: 11px;
+    font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; border-radius: 40px;
+    transition: all 0.3s;
+  }
+  .btn-sage-solid:hover { background: var(--sage-light); transform: translateY(-2px); }
+
+  /* ── CONTACTO ── */
+  .contacto-wrap { background: var(--off-white); padding: 80px 24px 60px; }
+  .contacto { max-width: 480px; margin: 0 auto; text-align: center; }
+  .contacto .section-divider { margin: 0 auto 36px; }
+  .contacto-items { display: flex; flex-direction: column; }
+  .contacto-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--light-line);
+  }
+  .contacto-item:last-child { border-bottom: none; }
+  .contacto-label {
+    font-size: 9px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--sage);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .contacto-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--ink);
+  }
+  .contacto-value a {
+    color: var(--ink-soft); text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .contacto-value a:hover { color: var(--sage-deep); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); text-align: center; padding: 46px 24px; }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: white; margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .footer-sub {
+    font-size: 9px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(168,188,169,0.5);
+    margin-bottom: 18px;
+  }
+  .footer-divider {
+    width: 28px; height: 1px;
+    background: rgba(168,188,169,0.3);
+    margin: 0 auto 18px;
+  }
+  .footer-text {
+    font-size: 12px; line-height: 1.9;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 50px 24px; }
+    .hero-bg-shape { display: none; }
+    .sobre-wrap { padding: 60px 24px; }
+    .sobre { grid-template-columns: 1fr; gap: 44px; }
+    .servicios-wrap { padding: 60px 24px; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .mid-banner { padding: 60px 24px; }
+  }
+  @media (max-width: 600px) {
+    .servicios-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-brand">
+    <div class="nav-monogram">DM</div>
+    <div>
+      <span class="nav-brand-name">Diego T. Mayorga</span>
+      <span class="nav-brand-sub">Lic. en Psicología</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/542804728661" target="_blank" class="nav-cta">Consultar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Atención virtual · Jóvenes y adultos</div>
+    <h1 class="hero-title">
+      <em>Psicología</em>
+      <strong>Diego Tomás</strong>
+      Mayorga
+    </h1>
+    <span class="hero-subtitle">Licenciado en Psicología</span>
+    <p class="hero-tagline">
+      Un espacio de escucha genuina, donde podés explorar lo que sentís y construir el cambio que buscás.
+    </p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/542804728661" target="_blank" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Pedir turno
+      </a>
+      <a href="#sobre" class="btn-outline">Conocerme</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<div class="sobre-wrap" id="sobre">
+  <div class="sobre">
+    <div class="sobre-photo-wrap">
+      <div class="sobre-photo-bg"></div>
+      <div class="sobre-photo">
+        <img src="data:image/jpeg;base64,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" alt="Diego Tomás Mayorga" style="width:100%; display:block; filter: grayscale(8%) contrast(1.04);">
+      </div>
+      <div class="sobre-photo-badge">
+        <div class="badge-name">Diego T. Mayorga</div>
+        <div class="badge-title">Lic. en Psicología · UCALP</div>
+      </div>
+    </div>
+
+    <div class="sobre-text">
+      <div class="section-label">Sobre mí</div>
+      <h2 class="section-title">Un espacio para vos</h2>
+      <div class="section-divider"></div>
+
+      <p class="sobre-highlight">"Empezar a pedir ayuda no es el final de algo, es el comienzo de conocerte."</p>
+
+      <p>Soy Diego Tomás Mayorga, Licenciado en Psicología egresado de la Universidad Católica de La Plata (UCALP), y acompaño a jóvenes y adultos en procesos de autoconocimiento, cambio y bienestar emocional a través de un encuadre virtual accesible y de calidad.</p>
+
+      <p>Me especializo en brindar un espacio genuino donde lo que sentís tiene lugar. Trabajo desde una mirada integradora, combinando distintas perspectivas teóricas para adaptar el proceso a lo que cada persona necesita en su momento.</p>
+
+      <p>La atención virtual nos permite trabajar juntos sin importar dónde estés, con la misma profundidad y compromiso que en cualquier otro espacio terapéutico.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<div class="servicios-wrap" id="servicios">
+  <div class="servicios">
+    <div class="servicios-header">
+      <div class="section-label">Modalidades de trabajo</div>
+      <h2 class="section-title">¿En qué puedo acompañarte?</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="servicios-grid">
+
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a8f7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="servicio-nombre">Ansiedad y estrés</div>
+        <div class="servicio-desc">Herramientas concretas para atravesar la ansiedad, los miedos y las situaciones de estrés que impiden vivir con más calma.</div>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a8f7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="servicio-nombre">Autoestima e identidad</div>
+        <div class="servicio-desc">Explorar quién sos, trabajar la autoimagen y construir una relación más sana y compasiva con vos mismo.</div>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a8f7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="servicio-nombre">Vínculos y relaciones</div>
+        <div class="servicio-desc">Trabajo sobre dinámicas relacionales, comunicación, límites y los patrones que se repiten en parejas, familia o amistades.</div>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a8f7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l2 2 4-4"/></svg>
+        </div>
+        <div class="servicio-nombre">Crisis y duelo</div>
+        <div class="servicio-desc">Acompañamiento en momentos de ruptura, pérdidas, duelos y transiciones vitales que generan desestabilización emocional.</div>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a8f7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="servicio-nombre">Atención virtual</div>
+        <div class="servicio-desc">Sesiones individuales por videollamada, con la misma calidad y contención que la presencialidad, desde cualquier lugar del país.</div>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a8f7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="servicio-nombre">Orientación para jóvenes</div>
+        <div class="servicio-desc">Espacio especial para adolescentes y jóvenes adultos que atraviesan procesos de búsqueda, cambio o necesitan un lugar donde ser escuchados.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MID BANNER -->
+<div class="mid-banner">
+  <div class="mid-banner-shape"></div>
+  <div class="mid-banner-shape2"></div>
+  <div class="mid-banner-content">
+    <div class="section-label" style="display:block; margin-bottom:16px;">Primer consulta</div>
+    <h2>¿Querés dar el primer paso?</h2>
+    <p>El primer contacto es gratuito. Hablemos para conocernos y entender cómo puedo acompañarte en lo que estás atravesando.</p>
+    <a href="https://wa.me/542804728661" target="_blank" class="btn-sage-solid">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      Escribime por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div class="contacto-wrap" id="contacto">
+  <div class="contacto">
+    <div class="section-label">Contacto</div>
+    <h2 class="section-title" style="font-size:clamp(24px,3vw,38px);">Estoy acá</h2>
+    <div class="section-divider"></div>
+    <div class="contacto-items">
+      <div class="contacto-item">
+        <div class="contacto-label">Ubicación</div>
+        <div class="contacto-value" style="font-size:17px;">La Plata, Buenos Aires</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-label">Modalidad</div>
+        <div class="contacto-value" style="font-size:17px;">Atención virtual · 100% online</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-label">WhatsApp</div>
+        <div class="contacto-value"><a href="https://wa.me/542804728661">2804-728661</a></div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-label">Para quién</div>
+        <div class="contacto-value" style="font-size:16px;">Jóvenes y adultos</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Diego Tomás Mayorga</div>
+  <div class="footer-sub">Lic. en Psicología · Atención virtual</div>
+  <div class="footer-divider"></div>
+  <div class="footer-text">
+    La Plata, Buenos Aires · WA: 2804-728661<br>
+    <span style="font-size:11px; color:rgba(255,255,255,0.12); margin-top:10px; display:block;">© 2025 · Todos los derechos reservados</span>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
